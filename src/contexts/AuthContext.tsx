@@ -1,5 +1,5 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { createContext, useEffect, useState } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { createContext, useEffect, useState } from 'react';
 
 type AuthContextType = {
   login: (user: User) => void;
@@ -27,25 +27,32 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const login = (user: User) => {};
   const logout = () => {};
 
-  const logup = ({ name, password }: User) => {
-    console.log(name, password);
+  const logup = async ({ name, password }: User) => {
+    try {
+      console.log(name, password);
+      await setDataUser({ name, password });
+      setIsAuthenticated(true);
+      setOnboarding(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const storeData = async (user: User) => {
+  const setDataUser = async (user: User) => {
     try {
       const jsonValue = JSON.stringify(user);
-      await AsyncStorage.setItem("my-key", jsonValue);
+      await AsyncStorage.setItem('@user', jsonValue);
     } catch (e) {
-      // saving error
+      console.log(e);
     }
   };
 
   const getData = async () => {
     try {
-      const jsonValue = await AsyncStorage.getItem("my-key");
+      const jsonValue = await AsyncStorage.getItem('@user');
       return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch (e) {
-      // error reading value
+      console.log(e);
     }
   };
 

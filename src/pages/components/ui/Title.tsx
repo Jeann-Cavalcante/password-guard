@@ -1,5 +1,5 @@
-import { StyleSheet, Text } from "react-native";
-import { moderateScale } from "react-native-size-matters";
+import { StyleSheet, Text } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 
 type TitleProps = {
   text: string;
@@ -11,9 +11,9 @@ const Title = ({ text }: TitleProps) => {
 
 const styles = StyleSheet.create({
   title: {
-    fontFamily: "BebasNeue-Regular",
+    fontFamily: 'BebasNeue-Regular',
     fontSize: moderateScale(40),
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 });
 

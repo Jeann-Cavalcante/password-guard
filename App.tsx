@@ -1,20 +1,22 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import React from 'react';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import Onboarding from "./src/pages/Onboarding";
-import { useFonts } from "expo-font";
-import SplashScreen from "./src/pages/SplashScreen";
-import { useCallback } from "react";
-import { AuthProvider } from "./src/contexts/AuthContext";
+import Onboarding from './src/pages/Onboarding';
+import { useFonts } from 'expo-font';
+import SplashScreen from './src/pages/SplashScreen';
+import { useCallback } from 'react';
+import { AuthProvider } from './src/contexts/AuthContext';
+import { scale } from 'react-native-size-matters';
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
-    "Poppins-Black": require("./assets/fonts/Poppins/Poppins-Black.ttf"),
-    "Poppins-Bold": require("./assets/fonts/Poppins/Poppins-Bold.ttf"),
-    "Poppins-Light": require("./assets/fonts/Poppins/Poppins-Light.ttf"),
-    "Poppins-Regular": require("./assets/fonts/Poppins/Poppins-Regular.ttf"),
-    "BebasNeue-Regular": require("./assets/fonts/BebasNeue-Regular.ttf"),
+    'Poppins-Black': require('./assets/fonts/Poppins/Poppins-Black.ttf'),
+    'Poppins-Bold': require('./assets/fonts/Poppins/Poppins-Bold.ttf'),
+    'Poppins-Light': require('./assets/fonts/Poppins/Poppins-Light.ttf'),
+    'Poppins-Regular': require('./assets/fonts/Poppins/Poppins-Regular.ttf'),
+    'BebasNeue-Regular': require('./assets/fonts/BebasNeue-Regular.ttf'),
   });
 
   const onLayoutRootView = useCallback(async () => {
@@ -40,7 +42,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
-    padding: 20,
+    backgroundColor: 'white',
+    padding: scale(20),
   },
 });

@@ -1,17 +1,20 @@
-import { StyleSheet, View, Text, Button } from "react-native";
-import PagerView from "react-native-pager-view";
-import Pag1 from "./components/pag1";
-import { useRef, useState } from "react";
-import Pag2 from "./components/pag2";
-import Pag3 from "./components/pag3";
+import { StyleSheet, View } from 'react-native';
+import PagerView from 'react-native-pager-view';
+import Pag1 from './components/pag1';
+import { useRef, useState } from 'react';
+import Pag2 from './components/pag2';
+import Pag3 from './components/pag3';
 
 const Onboarding = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
-  const pagerRef = useRef(null);
+  const pagerRef = useRef(null) as any;
 
   const handleNextPage = () => {
-    pagerRef.current.setPage(currentPage + 1);
+    const current = pagerRef.current;
+    if (current) {
+      current.setPage(currentPage + 1);
+    }
 
     console.log(currentPage);
   };
@@ -19,9 +22,9 @@ const Onboarding = () => {
   return (
     <PagerView
       ref={pagerRef}
-      onPageSelected={(event) => setCurrentPage(event.nativeEvent.position)}
+      onPageSelected={event => setCurrentPage(event.nativeEvent.position)}
       style={styles.pagerView}
-      initialPage={1}
+      initialPage={0}
     >
       <View key="1">
         <Pag1 handleNextPage={handleNextPage} />
@@ -39,7 +42,7 @@ const Onboarding = () => {
 const styles = StyleSheet.create({
   pagerView: {
     flex: 1,
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
   },
 });
 
