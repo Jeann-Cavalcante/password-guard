@@ -12,8 +12,8 @@ const Pag3 = () => {
       </Text>
 
       <View style={styles.form}>
-        <TextInput label="Senha" />
-        <TextInput label="Confirmar Senha" />
+        <TextInput secureTextEntry label="Senha" />
+        <TextInput secureTextEntry label="Confirmar Senha" />
       </View>
 
       <TouchableOpacity style={styles.button}>
