@@ -4,9 +4,9 @@ import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 
 const SplashScreen = () => {
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <LottieView
-        source={require("./assets/pass.json")}
+        source={require("../../../assets/pass.json")}
         loop
         autoPlay
         resizeMode="contain"
