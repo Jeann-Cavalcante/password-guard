@@ -6,6 +6,7 @@ import Onboarding from "./src/pages/Onboarding";
 import { useFonts } from "expo-font";
 import SplashScreen from "./src/pages/SplashScreen";
 import { useCallback } from "react";
+import { AuthProvider } from "./src/contexts/AuthContext";
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
@@ -27,10 +28,12 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
-      <Onboarding />
-      <StatusBar style="dark" />
-    </SafeAreaView>
+    <AuthProvider>
+      <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
+        <Onboarding />
+        <StatusBar style="dark" />
+      </SafeAreaView>
+    </AuthProvider>
   );
 }
 

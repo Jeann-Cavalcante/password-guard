@@ -1,8 +1,20 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Title from "../../components/ui/Title";
 import { TextInput } from "react-native-paper";
+import { useAuth } from "../../../hooks/useAuth";
+import { useState } from "react";
 
 const Pag3 = () => {
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setName] = useState("");
+
+  const { logup } = useAuth();
+
+  const handleLogup = () => {
+    logup({ name, password });
+  };
+
   return (
     <View>
       <Title text="Vamos começar" />
@@ -12,11 +24,26 @@ const Pag3 = () => {
       </Text>
 
       <View style={styles.form}>
-        <TextInput secureTextEntry label="Senha" />
-        <TextInput secureTextEntry label="Confirmar Senha" />
+        <TextInput
+          onChangeText={(text) => setName(text)}
+          value={name}
+          label="Nome"
+        />
+        <TextInput
+          onChangeText={(text) => setPassword(text)}
+          value={password}
+          secureTextEntry
+          label="Senha"
+        />
+        <TextInput
+          onChangeText={(text) => setConfirmPassword(text)}
+          value={confirmPassword}
+          secureTextEntry
+          label="Confirmar Senha"
+        />
       </View>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity onPress={handleLogup} style={styles.button}>
         <Text>Criar Senha</Text>
       </TouchableOpacity>
     </View>
