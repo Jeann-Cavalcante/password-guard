@@ -1,5 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Title from '../../components/ui/Title';
+import Title from '../../../components/ui/Title';
 import { TextInput } from 'react-native-paper';
 import { useAuth } from '../../../hooks/useAuth';
 import { useState } from 'react';

@@ -1,5 +1,5 @@
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Title from '../../components/ui/Title';
+import Title from '../../../components/ui/Title';
 import { moderateScale, verticalScale } from 'react-native-size-matters';
 
 const Pag2 = ({ handleNextPage }: any) => {

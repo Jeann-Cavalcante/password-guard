@@ -9,6 +9,8 @@ import SplashScreen from './src/pages/SplashScreen';
 import { useCallback } from 'react';
 import { AuthProvider } from './src/contexts/AuthContext';
 import { scale } from 'react-native-size-matters';
+import 'react-native-gesture-handler';
+import Routes from './src/routes';
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
@@ -32,7 +34,7 @@ export default function App() {
   return (
     <AuthProvider>
       <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
-        <Onboarding />
+        <Routes />
         <StatusBar style="dark" />
       </SafeAreaView>
     </AuthProvider>
