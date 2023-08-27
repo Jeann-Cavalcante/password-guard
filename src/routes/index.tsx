@@ -4,32 +4,14 @@ import Onboarding from '../pages/Onboarding';
 import Login from '../pages/Login';
 import { useAuth } from '../hooks/useAuth';
 import { NavigationContainer } from '@react-navigation/native';
-import { useState, useCallback, useEffect } from 'react';
-import { AppState } from 'react-native';
+import SplashScreen from '../pages/SplashScreen';
 
 const Stack = createStackNavigator();
 
 function Routes() {
-  const [timeAway, setTimeAway] = useState(0);
-
-  const { onboarding, isAuthenticated, logout } = useAuth();
-  console.log(onboarding, isAuthenticated);
-
-  const handleAppStateChange = nextAppState => {
-    if (nextAppState === 'background') {
-      console.log('O aplicativo está em segundo plano.');
-      // Faça o que for necessário quando o aplicativo estiver em segundo plano.
-    }
-  };
-
-  useEffect(() => {
-    AppState.addEventListener('change', handleAppStateChange);
-
-    return () => {
-      AppState.removeEventListener('change', handleAppStateChange);
-    };
-  }, []);
-
+  const { onboarding, isAuthenticated } = useAuth();
+  const loading = false;
+  console.log(loading);
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -38,6 +20,9 @@ function Routes() {
           cardStyle: { backgroundColor: '#fff' },
         }}
       >
+        {loading && (
+          <Stack.Screen name="SplashScreen" component={SplashScreen} />
+        )}
         {!onboarding && (
           <Stack.Screen name="Onboarding" component={Onboarding} />
         )}

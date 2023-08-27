@@ -1,5 +1,6 @@
-import { Text, TouchableOpacity, View } from 'react-native';
-import { useAuth } from '../../hooks/useAuth';
+import { Text, TouchableOpacity, View } from "react-native";
+import { useAuth } from "../../hooks/useAuth";
+import SplashScreen from "../SplashScreen";
 
 const Home = () => {
   const { logout } = useAuth();
@@ -7,11 +8,12 @@ const Home = () => {
     logout();
   };
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Text>Home</Text>
       <TouchableOpacity onPress={handleLogout}>
         <Text>Logout</Text>
       </TouchableOpacity>
+      <SplashScreen />
     </View>
   );
 };

@@ -1,6 +1,6 @@
 import { View } from "react-native";
 import LottieView from "lottie-react-native";
-import { scale, verticalScale, moderateScale } from "react-native-size-matters";
+import { scale, verticalScale } from "react-native-size-matters";
 
 const SplashScreen = () => {
   return (
